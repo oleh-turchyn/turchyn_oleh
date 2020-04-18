@@ -1,6 +1,7 @@
 package com.turchyn.tours;
 
 public class TourBase {
+    protected int id;
     protected String tourTitle;
     //protected String tourType;
     protected String tourLocation;
@@ -9,7 +10,8 @@ public class TourBase {
     protected int tourDuration; // number of days
     protected int tourPrice;
 
-    public TourBase(String tourTitle, String tourLocation, String tourTransport, String tourNutrition, int tourDuration, int tourPrice) {
+    public TourBase(int id,String tourTitle, String tourLocation, String tourTransport, String tourNutrition, int tourDuration, int tourPrice) {
+        this.id=id;
         this.tourTitle = tourTitle;
         this.tourLocation = tourLocation;
         this.tourTransport = tourTransport;
@@ -69,6 +71,7 @@ public class TourBase {
     @Override
     public String toString() {
         return "TourBase{" +
+                "tourID='" + id + '\'' +
                 "tourTitle='" + tourTitle + '\'' +
                 ", tourLocation='" + tourLocation + '\'' +
                 ", tourTransport='" + tourTransport + '\'' +

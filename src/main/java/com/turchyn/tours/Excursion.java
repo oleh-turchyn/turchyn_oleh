@@ -3,8 +3,8 @@ package com.turchyn.tours;
 public class Excursion extends TourBase {
     private  String tourType;
 
-    public Excursion(String tourTitle, String tourLocation, String tourTransport, String tourNutrition, int tourDuration, int tourPrice, String tourType) {
-        super(tourTitle, tourLocation, tourTransport, tourNutrition, tourDuration, tourPrice);
+    public Excursion(int id,String tourTitle, String tourLocation, String tourTransport, String tourNutrition, int tourDuration, int tourPrice, String tourType) {
+        super(id,tourTitle, tourLocation, tourTransport, tourNutrition, tourDuration, tourPrice);
         this.tourType=tourType;
     }
 
