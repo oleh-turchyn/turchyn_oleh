@@ -1,11 +1,11 @@
-package com.turchyn.tours;
+package com.turchyn.usermanagement.model;
 
-public class Excursion extends TourBase {
-    private  String tourType;
+public class Holiday extends TourBase {
+    private String tourType;
 
-    public Excursion(int id,String tourTitle, String tourLocation, String tourTransport, String tourNutrition, int tourDuration, int tourPrice, String tourType) {
+    public Holiday(int id,String tourTitle, String tourLocation, String tourTransport, String tourNutrition, int tourDuration, int tourPrice, String tourType) {
         super(id,tourTitle, tourLocation, tourTransport, tourNutrition, tourDuration, tourPrice);
-        this.tourType=tourType;
+        this.tourType = tourType;
     }
 
     public String getTourType() {
@@ -18,7 +18,7 @@ public class Excursion extends TourBase {
 
     @Override
     public String toString() {
-        return "Excursion{" +
+        return "Holiday{" +
                 "tourType='" + tourType + '\'' +
                 ", tourTitle='" + tourTitle + '\'' +
                 ", tourLocation='" + tourLocation + '\'' +

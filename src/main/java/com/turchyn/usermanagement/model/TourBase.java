@@ -1,6 +1,14 @@
-package com.turchyn.tours;
+package com.turchyn.usermanagement.model;
 
 public class TourBase {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     protected int id;
     protected String tourTitle;
     //protected String tourType;

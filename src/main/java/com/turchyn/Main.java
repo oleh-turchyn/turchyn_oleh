@@ -1,6 +1,6 @@
 package com.turchyn;
 
-import com.turchyn.tours.TourBase;
+import com.turchyn.usermanagement.model.TourBase;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
