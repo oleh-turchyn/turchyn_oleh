@@ -9,15 +9,15 @@
 
     <h1>Tours Management</h1>
     <h2>
-        <a href="/new">Add New Book</a>
+        <a href="/new">Add New Tour</a>
         &nbsp;&nbsp;&nbsp;
-        <a href="/list">List All Books</a>
+        <a href="<%=request.getContextPath()%>/list">List All Tour</a>
 
     </h2>
 
 <div align="center">
     <table border="1" cellpadding="5">
-        <caption><h2>List of Tours</h2></caption>
+        <caption><h2>List of Tours1</h2></caption>
         <tr>
             <th>ID</th>
             <th>Title</th>

@@ -21,15 +21,15 @@
 <!--        <param-value> </param-value>-->
 <!--    </context-param>-->
 
-<!--    <servlet>-->
-<!--        <servlet-name>UserServlet</servlet-name>-->
-<!--        <servlet-class>com.turchyn.usermanagement.webs.UserServlet</servlet-class>-->
-<!--    </servlet>-->
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>com.turchyn.usermanagement.webs.UserServlet</servlet-class>
+    </servlet>
 
-<!--      <servlet-mapping>-->
-<!--        <servlet-name>UserServlet</servlet-name>-->
-<!--        <url-pattern>/</url-pattern>-->
-<!--    </servlet-mapping>-->
+      <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
 
     <error-page>
         <exception-type>java.lang.Exception</exception-type>

@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/test")
+//@WebServlet("http://localhost:8080/test/list")
 public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private TourDAO tourDAO;
@@ -46,7 +46,7 @@ public class UserServlet extends HttpServlet {
                 case "/new":
                     showNewForm(request, response);
                     break;
-                default:
+                case "/list":
                     listTour(request, response);
                     break;
             }
