@@ -65,7 +65,7 @@ public class UserServlet extends HttpServlet {
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("tour-form.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("TourForm.jsp");
         dispatcher.forward(request, response);
     }
 }

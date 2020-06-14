@@ -9,7 +9,7 @@
 
     <h1>Tours Management</h1>
     <h2>
-        <a href="/new">Add New Tour</a>
+        <a href="<%=request.getContextPath()%>/new">Add New Tour</a>
         &nbsp;&nbsp;&nbsp;
         <a href="<%=request.getContextPath()%>/list">List All Tour</a>
 
