@@ -39,7 +39,7 @@
                 <tr>
                     <th>Title: </th>
                     <td>
-                        <input type="text" name="tourTitle" size="45"
+                        <input type="text" name="title" size="45"
                                value="<c:out value='${tour.tourTitle}' />"
                             />
                     </td>
@@ -47,7 +47,7 @@
                 <tr>
                     <th>Location: </th>
                     <td>
-                        <input type="text" name="tourLocation" size="45"
+                        <input type="text" name="location" size="45"
                                value="<c:out value='${tour.tourLocation}' />"
                         />
                     </td>
@@ -55,7 +55,7 @@
                 <tr>
                     <th>Transport: </th>
                     <td>
-                        <input type="text" name="tourTransport" size="5"
+                        <input type="text" name="transport" size="45"
                                value="<c:out value='${tour.tourTransport}' />"
                         />
                     </td>
@@ -63,7 +63,7 @@
                 <tr>
                     <th>Nutrition: </th>
                     <td>
-                        <input type="text" name="tourNutrition" size="5"
+                        <input type="text" name="nutrition" size="45"
                                value="<c:out value='${tour.tourNutrition}' />"
                         />
                     </td>
@@ -71,7 +71,7 @@
                 <tr>
                     <th>Duration: </th>
                     <td>
-                        <input type="text" name="tourDuration" size="5"
+                        <input type="text" name="duration" size="45"
                                value="<c:out value='${tour.tourDuration}' />"
                         />
                     </td>
@@ -79,7 +79,7 @@
                 <tr>
                     <th>Price: </th>
                     <td>
-                        <input type="text" name="tourPrice" size="5"
+                        <input type="text" name="price" size="45"
                                value="<c:out value='${tour.tourPrice}' />"
                         />
                     </td>

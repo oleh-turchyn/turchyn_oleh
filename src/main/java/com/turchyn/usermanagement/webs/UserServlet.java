@@ -27,7 +27,7 @@ public class UserServlet extends HttpServlet {
         String jdbcURL = "jdbc:h2:D:\\EPAM Java Online\\turchyn_oleh\\db\\tours2";
         String jdbcUsername = "sa";
         String jdbcPassword = "pass";
-        tourDAO = new TourDAO(jdbcURL,jdbcUsername,jdbcPassword);
+        tourDAO = new TourDAO(jdbcURL, jdbcUsername, jdbcPassword);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,6 +49,9 @@ public class UserServlet extends HttpServlet {
                 case "/list":
                     listTour(request, response);
                     break;
+                case "/insert":
+                    insertTour(request, response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -58,7 +61,7 @@ public class UserServlet extends HttpServlet {
     private void listTour(HttpServletRequest request, HttpServletResponse response) throws
             SQLException, IOException, ServletException {
         List<TourBase> listTours = tourDAO.listAllTours();
-            request.setAttribute("listTours", listTours);
+        request.setAttribute("listTours", listTours);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
     }
@@ -67,5 +70,18 @@ public class UserServlet extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("TourForm.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void insertTour(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException,IOException {
+        String title = request.getParameter("title");
+        String location = request.getParameter("location");
+        String transport = request.getParameter("transport");
+        String nutrition = request.getParameter("nutrition");
+        int duration = Integer.parseInt(request.getParameter("duration"));
+        int price = Integer.parseInt(request.getParameter("price"));
+        TourBase tour = new TourBase(title,location,transport,nutrition,duration,price);
+        tourDAO.insertTour(tour);
+        response.sendRedirect("list");
     }
 }

@@ -61,22 +61,6 @@ public class TourDAO {
         disconnect();
         return rowInserted;
 
-//        try(Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_TOURS_SQL)){
-//            preparedStatement.setString(1,tour.getTourTitle());
-//            preparedStatement.setString(2,tour.getTourLocation());
-//            preparedStatement.setString(1,tour.getTourTransport());
-//            preparedStatement.setString(1,tour.getTourNutrition());
-//            preparedStatement.setInt(1,tour.getTourDuration());
-//            preparedStatement.setInt(1,tour.getTourPrice());
-//
-//            System.out.println(preparedStatement);
-//            preparedStatement.executeUpdate();
-//        }catch (SQLException e){
-//            System.out.println("Exception Message " + e.getLocalizedMessage());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
     }
     public List<TourBase> listAllTours() throws SQLException {
         List<TourBase> listTour = new ArrayList<>();
