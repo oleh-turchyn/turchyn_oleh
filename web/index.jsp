@@ -37,9 +37,9 @@
                 <td><c:out value="${tour.tourDuration}" /></td>
                 <td><c:out value="${tour.tourPrice}" /></td>
                 <td>
-                    <a href="/edit?id=<c:out value='${tour.id}' />">Edit</a>
+                    <a href="<%=request.getContextPath()%>/edit?id=<c:out value='${tour.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="/delete?id=<c:out value='${tour.id}' />">Delete</a>
+                    <a href="<%=request.getContextPath()%>/delete?id=<c:out value='${tour.id}' />">Delete</a>
                 </td>
             </tr>
         </c:forEach>

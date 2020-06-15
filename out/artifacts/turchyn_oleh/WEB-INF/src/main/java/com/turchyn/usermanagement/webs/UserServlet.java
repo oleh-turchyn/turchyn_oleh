@@ -35,22 +35,29 @@ public class UserServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String items[] = {"4","ti","stryj","car","lunch","5","200"};
-//        request.setAttribute("items",items);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-//        dispatcher.forward(request, response);
         String action = request.getServletPath();
-
         try {
             switch (action) {
                 case "/new":
                     showNewForm(request, response);
                     break;
-                case "/list":
-                    listTour(request, response);
-                    break;
+//                case "/list":
+//                    listTour(request, response);
+//                    break;
                 case "/insert":
                     insertTour(request, response);
+                    break;
+                case "/delete":
+                    deleteTour(request, response);
+                    break;
+                case "/edit":
+                    showEditForm(request, response);
+                    break;
+                case "/update":
+                    updateTour(request, response);
+                    break;
+                default:
+                    listTour(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -72,16 +79,48 @@ public class UserServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        TourBase existingTour = tourDAO.getTour(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("TourForm.jsp");
+        request.setAttribute("tour", existingTour);
+        dispatcher.forward(request, response);
+    }
+
     private void insertTour(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException,IOException {
+            throws SQLException, IOException {
         String title = request.getParameter("title");
         String location = request.getParameter("location");
         String transport = request.getParameter("transport");
         String nutrition = request.getParameter("nutrition");
         int duration = Integer.parseInt(request.getParameter("duration"));
         int price = Integer.parseInt(request.getParameter("price"));
-        TourBase tour = new TourBase(title,location,transport,nutrition,duration,price);
+        TourBase tour = new TourBase(title, location, transport, nutrition, duration, price);
         tourDAO.insertTour(tour);
         response.sendRedirect("list");
+    }
+
+    private void deleteTour(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        TourBase tour = new TourBase(id);
+        tourDAO.deleteTour(tour);
+        response.sendRedirect("list");
+    }
+
+    private void updateTour(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String title = request.getParameter("title");
+        String location = request.getParameter("location");
+        String transport = request.getParameter("transport");
+        String nutrition = request.getParameter("nutrition");
+        int duration = Integer.parseInt(request.getParameter("duration"));
+        int price = Integer.parseInt(request.getParameter("price"));
+        TourBase tour = new TourBase(id, title, location, transport, nutrition, duration, price);
+        tourDAO.updateTour(tour);
+        response.sendRedirect("list");
+
     }
 }
