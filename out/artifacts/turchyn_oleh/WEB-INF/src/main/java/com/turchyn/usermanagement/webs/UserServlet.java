@@ -67,7 +67,7 @@ public class UserServlet extends HttpServlet {
 
     private void listTour(HttpServletRequest request, HttpServletResponse response) throws
             SQLException, IOException, ServletException {
-        List<TourBase> listTours = tourDAO.listAllTours();
+        List<TourBase> listTours = tourDAO.read();
         request.setAttribute("listTours", listTours);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
@@ -82,7 +82,7 @@ public class UserServlet extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        TourBase existingTour = tourDAO.getTour(id);
+        TourBase existingTour = tourDAO.getById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("TourForm.jsp");
         request.setAttribute("tour", existingTour);
         dispatcher.forward(request, response);
@@ -97,7 +97,7 @@ public class UserServlet extends HttpServlet {
         int duration = Integer.parseInt(request.getParameter("duration"));
         int price = Integer.parseInt(request.getParameter("price"));
         TourBase tour = new TourBase(title, location, transport, nutrition, duration, price);
-        tourDAO.insertTour(tour);
+        tourDAO.update(tour);
         response.sendRedirect("list");
     }
 
@@ -105,7 +105,7 @@ public class UserServlet extends HttpServlet {
             throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         TourBase tour = new TourBase(id);
-        tourDAO.deleteTour(tour);
+        tourDAO.delete(tour);
         response.sendRedirect("list");
     }
 
@@ -119,7 +119,7 @@ public class UserServlet extends HttpServlet {
         int duration = Integer.parseInt(request.getParameter("duration"));
         int price = Integer.parseInt(request.getParameter("price"));
         TourBase tour = new TourBase(id, title, location, transport, nutrition, duration, price);
-        tourDAO.updateTour(tour);
+        tourDAO.update(tour);
         response.sendRedirect("list");
 
     }

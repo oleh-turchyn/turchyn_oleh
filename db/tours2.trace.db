@@ -479,3 +479,21 @@ update tours set title = ?, location = ?, transport = ?, nutrition = ?, duration
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:835)
+2020-06-16 23:44:53 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT_ALL_TOURS[*]"; expected "SET, SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+SELECT_ALL_TOURS [42001-199]
+2020-06-16 23:45:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT_ALL_TOURS[*]"; expected "SET, SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+SELECT_ALL_TOURS [42001-199]
+2020-06-16 23:48:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT_ALL_TOURS[*]"; expected "SET, SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+SELECT_ALL_TOURS [42001-199]
+2020-06-16 23:48:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT_ALL_TOURS[*]"; expected "SET, SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+SELECT_ALL_TOURS [42001-199]
+2020-06-16 23:53:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT_ALL_TOURS[*]"; expected "SET, SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+SELECT_ALL_TOURS [42001-199]
+2020-06-16 23:57:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT_ALL_TOURS[*]"; expected "SET, SAVEPOINT, SCRIPT, SHUTDOWN, SHOW"; SQL statement:
+SELECT_ALL_TOURS [42001-199]

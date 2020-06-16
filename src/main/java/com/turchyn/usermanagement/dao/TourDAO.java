@@ -1,12 +1,13 @@
 package com.turchyn.usermanagement.dao;
 
+import com.turchyn.tool.QueriesSQL;
 import com.turchyn.usermanagement.model.TourBase;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TourDAO {
+public class TourDAO implements GeneralDAO<TourBase>{
     private static final String DB_DRIVER = "org.h2.Driver";
     //    private static String jdbcURL = "jdbc:h2:D:\\EPAM Java Online\\turchyn_oleh\\db\\tours";
 //    private static String jdbcUsername = "sa";
@@ -15,11 +16,10 @@ public class TourDAO {
     private String jdbcUsername;
     private String jdbcPassword;
     private Connection jdbcConnection;
-
     private static final String INSERT_TOURS_SQL = "INSERT INTO tours" + "  (title, location, transport, nutrition, duration, price) VALUES " +
             " (?, ?, ?, ?, ?, ?);";
     private static final String SELECT_TOUR_BY_ID = "select * from tours where id=?";
-    private static final String SELECT_ALL_TOURS = "select * from tours";
+      private static final String SELECT_ALL_TOURS = "select * from tours";
     private static final String DELETE_TOURS_SQL = "delete from tours where id=?";
     private static final String UPDATE_TOURS_SQL = "update tours set title = ?, location = ?, transport = ?, nutrition = ?, duration = ?, price = ? where id = ?;";
 
@@ -47,8 +47,9 @@ public class TourDAO {
         }
     }
 
-    public boolean insertTour(TourBase tour) throws SQLException {
-        System.out.println(INSERT_TOURS_SQL);
+
+    @Override
+    public boolean create(TourBase tour) throws SQLException {
         connect();
         PreparedStatement statement = jdbcConnection.prepareStatement(INSERT_TOURS_SQL);
         statement.setString(1, tour.getTourTitle());
@@ -62,10 +63,10 @@ public class TourDAO {
         statement.close();
         disconnect();
         return rowInserted;
-
     }
 
-    public List<TourBase> listAllTours() throws SQLException {
+    @Override
+    public List read() throws SQLException {
         List<TourBase> listTour = new ArrayList<>();
         connect();
         Statement statement = jdbcConnection.createStatement();
@@ -88,33 +89,8 @@ public class TourDAO {
         return listTour;
     }
 
-    public boolean deleteTour(TourBase tour) throws SQLException {
-        connect();
-        PreparedStatement statement = jdbcConnection.prepareStatement(DELETE_TOURS_SQL);
-        statement.setInt(1, tour.getId());
-        boolean deletedRow = statement.executeUpdate() > 0;
-        statement.close();
-        disconnect();
-        return deletedRow;
-    }
-
-    public boolean updateTour(TourBase tour) throws SQLException {
-        connect();
-        PreparedStatement statement = jdbcConnection.prepareStatement(UPDATE_TOURS_SQL);
-        statement.setString(1, tour.getTourTitle());
-        statement.setString(2, tour.getTourLocation());
-        statement.setString(3, tour.getTourTransport());
-        statement.setString(4, tour.getTourNutrition());
-        statement.setInt(5, tour.getTourDuration());
-        statement.setInt(6, tour.getTourPrice());
-        statement.setInt(7,tour.getId());
-        boolean updatedRow = statement.executeUpdate() > 0;
-        statement.close();
-        disconnect();
-        return updatedRow;
-    }
-
-    public TourBase getTour(int id) throws SQLException {
+    @Override
+    public TourBase getById(int id) throws SQLException {
         TourBase tour = null;
         connect();
         PreparedStatement statement = jdbcConnection.prepareStatement(SELECT_TOUR_BY_ID);
@@ -134,5 +110,31 @@ public class TourDAO {
         return tour;
     }
 
+    @Override
+    public boolean update(TourBase tour) throws SQLException {
+        connect();
+        PreparedStatement statement = jdbcConnection.prepareStatement(UPDATE_TOURS_SQL);
+        statement.setString(1, tour.getTourTitle());
+        statement.setString(2, tour.getTourLocation());
+        statement.setString(3, tour.getTourTransport());
+        statement.setString(4, tour.getTourNutrition());
+        statement.setInt(5, tour.getTourDuration());
+        statement.setInt(6, tour.getTourPrice());
+        statement.setInt(7,tour.getId());
+        boolean updatedRow = statement.executeUpdate() > 0;
+        statement.close();
+        disconnect();
+        return updatedRow;
+    }
 
+    @Override
+    public boolean delete(TourBase tour) throws SQLException {
+        connect();
+        PreparedStatement statement = jdbcConnection.prepareStatement(DELETE_TOURS_SQL);
+        statement.setInt(1, tour.getId());
+        boolean deletedRow = statement.executeUpdate() > 0;
+        statement.close();
+        disconnect();
+        return deletedRow;
+    }
 }
