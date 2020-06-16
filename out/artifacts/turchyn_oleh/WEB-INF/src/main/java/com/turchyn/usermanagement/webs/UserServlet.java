@@ -24,10 +24,11 @@ public class UserServlet extends HttpServlet {
 //        String jdbcUsername = getServletContext().getInitParameter("jdbcUsername");
 ////        String jdbcPassword = getServletContext().getInitParameter("jdbcPassword");
 //        String jdbcPassword = "";
-        String jdbcURL = "jdbc:h2:D:\\EPAM Java Online\\turchyn_oleh\\db\\tours2";
-        String jdbcUsername = "sa";
-        String jdbcPassword = "pass";
-        tourDAO = new TourDAO(jdbcURL, jdbcUsername, jdbcPassword);
+//        String jdbcURL = "jdbc:h2:D:\\EPAM Java Online\\turchyn_oleh\\db\\tours2";
+//        String jdbcUsername = "sa";
+//        String jdbcPassword = "pass";
+//        tourDAO = new TourDAO(jdbcURL, jdbcUsername, jdbcPassword);
+        tourDAO = new TourDAO();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -97,7 +98,7 @@ public class UserServlet extends HttpServlet {
         int duration = Integer.parseInt(request.getParameter("duration"));
         int price = Integer.parseInt(request.getParameter("price"));
         TourBase tour = new TourBase(title, location, transport, nutrition, duration, price);
-        tourDAO.update(tour);
+        tourDAO.create(tour);
         response.sendRedirect("list");
     }
 
@@ -121,6 +122,5 @@ public class UserServlet extends HttpServlet {
         TourBase tour = new TourBase(id, title, location, transport, nutrition, duration, price);
         tourDAO.update(tour);
         response.sendRedirect("list");
-
     }
 }
