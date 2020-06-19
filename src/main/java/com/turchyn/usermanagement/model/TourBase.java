@@ -1,17 +1,10 @@
 package com.turchyn.usermanagement.model;
 
-public class TourBase {
-    public int getId() {
-        return id;
-    }
+import java.io.Serializable;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
+public class TourBase implements Serializable {
     protected int id;
     protected String tourTitle;
-    //protected String tourType;
     protected String tourLocation;
     protected String tourTransport;
     protected String tourNutrition;
@@ -35,7 +28,13 @@ public class TourBase {
         this.tourDuration = tourDuration;
         this.tourPrice = tourPrice;
     }
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getTourTitle() {
         return tourTitle;
     }
