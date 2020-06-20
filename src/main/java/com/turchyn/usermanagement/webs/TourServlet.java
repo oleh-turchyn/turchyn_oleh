@@ -2,6 +2,7 @@ package com.turchyn.usermanagement.webs;
 
 import com.turchyn.usermanagement.dao.TourDAO;
 import com.turchyn.usermanagement.model.TourBase;
+import com.turchyn.usermanagement.service.TourService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,9 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@WebServlet("http://localhost:8080/test/list")
-public class UserServlet extends HttpServlet {
+public class TourServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private TourDAO tourDAO;
+    private TourService tourService = new TourService();
 
     public void init() {
         tourDAO = new TourDAO();
@@ -60,7 +62,7 @@ public class UserServlet extends HttpServlet {
 
     private void listTour(HttpServletRequest request, HttpServletResponse response) throws
             SQLException, IOException, ServletException {
-        List<TourBase> listTours = tourDAO.read();
+        List<TourBase> listTours = tourService.getAllData();
         request.setAttribute("listTours", listTours);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
@@ -75,7 +77,7 @@ public class UserServlet extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
-        TourBase existingTour = tourDAO.getById(id);
+        TourBase existingTour = tourService.getDataById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("TourForm.jsp");
         request.setAttribute("tour", existingTour);
         dispatcher.forward(request, response);
@@ -90,7 +92,7 @@ public class UserServlet extends HttpServlet {
         int duration = Integer.parseInt(request.getParameter("duration"));
         int price = Integer.parseInt(request.getParameter("price"));
         TourBase tour = new TourBase(title, location, transport, nutrition, duration, price);
-        tourDAO.create(tour);
+        tourService.addData(tour);
         response.sendRedirect("list");
     }
 
@@ -98,7 +100,7 @@ public class UserServlet extends HttpServlet {
             throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         TourBase tour = new TourBase(id);
-        tourDAO.delete(tour);
+        tourService.deleteData(tour);
         response.sendRedirect("list");
     }
 
@@ -112,7 +114,7 @@ public class UserServlet extends HttpServlet {
         int duration = Integer.parseInt(request.getParameter("duration"));
         int price = Integer.parseInt(request.getParameter("price"));
         TourBase tour = new TourBase(id, title, location, transport, nutrition, duration, price);
-        tourDAO.update(tour);
+        tourService.updateData(tour);
         response.sendRedirect("list");
     }
 }

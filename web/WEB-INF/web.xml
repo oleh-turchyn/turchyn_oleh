@@ -22,12 +22,12 @@
 <!--    </context-param>-->
 
     <servlet>
-        <servlet-name>UserServlet</servlet-name>
-        <servlet-class>com.turchyn.usermanagement.webs.UserServlet</servlet-class>
+        <servlet-name>TourServlet</servlet-name>
+        <servlet-class>com.turchyn.usermanagement.webs.TourServlet</servlet-class>
     </servlet>
 
       <servlet-mapping>
-        <servlet-name>UserServlet</servlet-name>
+        <servlet-name>TourServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 

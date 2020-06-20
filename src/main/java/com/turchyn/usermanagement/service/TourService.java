@@ -14,7 +14,7 @@ public class TourService implements IService<TourBase> {
     }
 
     @Override
-    public List getData(int id) throws SQLException {
+    public List getAllData() throws SQLException {
         return  tourDAO.read();
     }
 
@@ -29,7 +29,7 @@ public class TourService implements IService<TourBase> {
     }
 
     @Override
-    public TourBase getUserDataById(int id) throws SQLException {
+    public TourBase getDataById(int id) throws SQLException {
         return tourDAO.getById(id);
     }
 }
