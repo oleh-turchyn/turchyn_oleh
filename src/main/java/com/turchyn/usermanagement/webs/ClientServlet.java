@@ -60,7 +60,7 @@ public class ClientServlet extends HttpServlet {
             SQLException, IOException, ServletException {
         List<Client> listTours = clientService.getAllData();
         request.setAttribute("listClients", listTours);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Tour.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -75,7 +75,7 @@ public class ClientServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Client existingClient = clientService.getDataById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("ClientForm.jsp");
-        request.setAttribute("tour", existingClient);
+        request.setAttribute("client", existingClient);
         dispatcher.forward(request, response);
     }
 

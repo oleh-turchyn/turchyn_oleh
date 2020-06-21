@@ -6,14 +6,16 @@ import com.turchyn.usermanagement.service.TourService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
-//@WebServlet("http://localhost:8080/test/list")
+//@WebServlet("/tour")
 public class TourServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private TourDAO tourDAO;
@@ -28,15 +30,15 @@ public class TourServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getServletPath();
+        String action =request.getServletPath();
         try {
             switch (action) {
                 case "/new":
                     showNewForm(request, response);
                     break;
-//                case "/list":
-//                    listTour(request, response);
-//                    break;
+                case "/test/tour/list":
+                    listTour(request, response);
+                    break;
                 case "/insert":
                     insertTour(request, response);
                     break;
@@ -49,9 +51,9 @@ public class TourServlet extends HttpServlet {
                 case "/update":
                     updateTour(request, response);
                     break;
-                default:
-                    listTour(request, response);
-                    break;
+//                default:
+//                    listTour(request, response);
+//                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);
@@ -62,8 +64,11 @@ public class TourServlet extends HttpServlet {
             SQLException, IOException, ServletException {
         List<TourBase> listTours = tourService.getAllData();
         request.setAttribute("listTours", listTours);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("Tour.jsp");
+//        dispatcher.forward(request, response);
+//        request.getRequestDispatcher("Tour.jsp").forward(request, response);
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("WEB-INF/Tour.jsp");
+        rd.forward(request,response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)

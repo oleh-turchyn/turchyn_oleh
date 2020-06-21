@@ -1,5 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%--
+  Created by IntelliJ IDEA.
+  User: Oleg
+  Date: 6/20/2020
+  Time: 4:35 PM
+  To change this template use File | Settings | File Templates.
+--%><%@ page language="java" contentType="text/html; charset=UTF-8"
+             pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
@@ -7,80 +13,72 @@
 </head>
 <body>
 
-    <h1>Tours</h1>
-    <h2>
-        <a href="<%=request.getContextPath()%>/new">Add New Tour</a>
+<h1>Clients</h1>
+<h2>
+    <a href="<%=request.getContextPath()%>/new">Add New Client</a>
+    &nbsp;&nbsp;&nbsp;
+    <a href="<%=request.getContextPath()%>/list">List All Clients</a>
 
-        <a href="<%=request.getContextPath()%>/list">List All Tours</a>
-
-    </h2>
+</h2>
 
 <div align="center">
-    <c:if test="${tour != null}">
+    <c:if test="${client != null}">
     <form action="update" method="post">
         </c:if>
-        <c:if test="${tour == null}">
+        <c:if test="${client == null}">
         <form action="insert" method="post">
             </c:if>
             <table border="1" cellpadding="5">
                 <caption>
                     <h2>
                         <c:if test="${tour != null}">
-                            Edit tour
+                            Edit client
                         </c:if>
                         <c:if test="${tour == null}">
-                            Add New tour
+                            Add New client
                         </c:if>
                     </h2>
                 </caption>
-                <c:if test="${tour != null}">
-                    <input type="hidden" name="id" value="<c:out value='${tour.id}' />" />
+                <c:if test="${client != null}">
+                    <input type="hidden" name="id" value="<c:out value='${client.id}' />" />
                 </c:if>
                 <tr>
-                    <th>Title: </th>
+                    <th>First name: </th>
                     <td>
                         <input type="text" name="title" size="45"
-                               value="<c:out value='${tour.tourTitle}' />"
-                            />
+                               value="<c:out value='${client.firstName}' />"
+                        />
                     </td>
                 </tr>
                 <tr>
-                    <th>Location: </th>
+                    <th>Last name: </th>
                     <td>
                         <input type="text" name="location" size="45"
-                               value="<c:out value='${tour.tourLocation}' />"
+                               value="<c:out value='${client.lastName}' />"
                         />
                     </td>
                 </tr>
                 <tr>
-                    <th>Transport: </th>
+                    <th>Patronymic: </th>
                     <td>
                         <input type="text" name="transport" size="45"
-                               value="<c:out value='${tour.tourTransport}' />"
+                               value="<c:out value='${client.patrName}' />"
                         />
                     </td>
                 </tr>
                 <tr>
-                    <th>Nutrition: </th>
+                    <th>Passport: </th>
                     <td>
                         <input type="text" name="nutrition" size="45"
-                               value="<c:out value='${tour.tourNutrition}' />"
+                               value="<c:out value='${client.passport}' />"
                         />
                     </td>
                 </tr>
                 <tr>
-                    <th>Duration: </th>
+                    <th>Telephone number: </th>
                     <td>
                         <input type="text" name="duration" size="45"
-                               value="<c:out value='${tour.tourDuration}' />"
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <th>Price: </th>
-                    <td>
-                        <input type="text" name="price" size="45"
-                               value="<c:out value='${tour.tourPrice}' />"
+                               value="<c:out value='${client.telNumber}' />"
                         />
                     </td>
                 </tr>
@@ -94,3 +92,4 @@
 </div>
 </body>
 </html>
+

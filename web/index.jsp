@@ -1,49 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Oleg
+  Date: 6/20/2020
+  Time: 5:27 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Tours Application</title>
+    <title>Title</title>
 </head>
 <body>
-
-    <h1>Tours Management</h1>
-    <h2>
-        <a href="<%=request.getContextPath()%>/new">Add New Tour</a>
-        &nbsp;&nbsp;&nbsp;
-        <a href="<%=request.getContextPath()%>/list">List All Tour</a>
-
-    </h2>
-
-<div align="center">
-    <table border="1" cellpadding="5">
-        <caption><h2>List of Tours1</h2></caption>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Location</th>
-            <th>Transport</th>
-            <th>Nutrition</th>
-            <th>Duration</th>
-            <th>Price</th>
-        </tr>
-        <c:forEach var="tour" items="${listTours}">
-            <tr>
-                <td><c:out value="${tour.id}" /></td>
-                <td><c:out value="${tour.tourTitle}" /></td>
-                <td><c:out value="${tour.tourLocation}" /></td>
-                <td><c:out value="${tour.tourTransport}" /></td>
-                <td><c:out value="${tour.tourNutrition}" /></td>
-                <td><c:out value="${tour.tourDuration}" /></td>
-                <td><c:out value="${tour.tourPrice}" /></td>
-                <td>
-                    <a href="<%=request.getContextPath()%>/edit?id=<c:out value='${tour.id}' />">Edit</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="<%=request.getContextPath()%>/delete?id=<c:out value='${tour.id}' />">Delete</a>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
+<h1>Web app </h1>
+<div>
+    <a href="<%=request.getContextPath()%>/tour">Tours</a>
+    &nbsp;&nbsp;&nbsp;
+    <button onclick="location.href='/test/tour'">List users</button>
+<%--    <a href="<%=request.getContextPath()%>/list">List All Tour</a>--%>
 </div>
 </body>
 </html>
