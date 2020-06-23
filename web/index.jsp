@@ -14,9 +14,9 @@
 <h1>Web app </h1>
 <div>
     <a href="<%=request.getContextPath()%>/tour">Tours</a>
-    &nbsp;&nbsp;&nbsp;
-<%--    <button onclick="location.href='/test/tour'">List users</button>--%>
-<%--    <a href="<%=request.getContextPath()%>/list">List All Tour</a>--%>
+    &nbsp;&nbsp
+    <a href="<%=request.getContextPath()%>/client">Clients</a>
+
 </div>
 </body>
 </html>

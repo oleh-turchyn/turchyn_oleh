@@ -11,12 +11,12 @@ import static com.turchyn.tool.ConnectionDB.*;
 
 public class ClientDAO implements GeneralDAO<Client> {
     private Connection jdbcConnection;
-    private static final String INSERT_CLIENTS_SQL = "INSERT INTO clients" + "  (first_name, last_name, patron_name, passport, tel_num,) VALUES " +
+    private static final String INSERT_CLIENTS_SQL = "INSERT INTO clients" + "  (first_name, last_name, patron_name, passport, tel_num) VALUES " +
             " (?, ?, ?, ?, ?);";
     private static final String SELECT_CLIENT_BY_ID = "select * from clients where id=?";
     private static final String SELECT_ALL_CLIENTS = "select * from clients";
     private static final String DELETE_CLIENTS_SQL = "delete from clients where id=?";
-    private static final String UPDATE_CLIENTS_SQL = "update clients set first_name = ?, last_name = ?, patron_name = ?, passport = ?, tel_num = ?, where id = ?;";
+    private static final String UPDATE_CLIENTS_SQL = "update clients set first_name = ?, last_name = ?, patron_name = ?, passport = ?, tel_num = ? where id = ?;";
     @Override
     public boolean create(Client client) throws SQLException {
         connect();

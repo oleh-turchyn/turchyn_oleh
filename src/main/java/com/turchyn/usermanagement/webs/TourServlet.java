@@ -65,9 +65,6 @@ public class TourServlet extends HttpServlet {
             SQLException, IOException, ServletException {
         List<TourBase> listTours = tourService.getAllData();
         request.setAttribute("listTours", listTours);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("Tour.jsp");
-//        dispatcher.forward(request, response);
-//        request.getRequestDispatcher("Tour.jsp").forward(request, response);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/Tour.jsp");
         rd.forward(request,response);
     }

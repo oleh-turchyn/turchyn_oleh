@@ -7,13 +7,14 @@ import com.turchyn.usermanagement.service.ClientService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
+@WebServlet(urlPatterns = {"/client/new","/client/list","/client/insert","/client/delete","/client/edit","/client/update"})
 public class ClientServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private ClientDAO clientDAO;
@@ -31,19 +32,19 @@ public class ClientServlet extends HttpServlet {
         String action = request.getServletPath();
         try {
             switch (action) {
-                case "/new":
+                case "/client/new":
                     showNewForm(request, response);
                     break;
-                case "/insert":
+                case "/client/insert":
                     insertClient(request, response);
                     break;
-                case "/delete":
+                case "/client/delete":
                     deleteClient(request, response);
                     break;
-                case "/edit":
+                case "/client/edit":
                     showEditForm(request, response);
                     break;
-                case "/update":
+                case "/client/update":
                     updateClient(request, response);
                     break;
                 default:
@@ -60,13 +61,13 @@ public class ClientServlet extends HttpServlet {
             SQLException, IOException, ServletException {
         List<Client> listTours = clientService.getAllData();
         request.setAttribute("listClients", listTours);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Tour.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/Client.jsp");
         dispatcher.forward(request, response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("ClientForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/ClientForm.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -74,7 +75,7 @@ public class ClientServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
         Client existingClient = clientService.getDataById(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("ClientForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/ClientForm.jsp");
         request.setAttribute("client", existingClient);
         dispatcher.forward(request, response);
     }
@@ -107,7 +108,7 @@ public class ClientServlet extends HttpServlet {
         String patronName =  request.getParameter("patron_name");
         String passport =  request.getParameter("passport");
         String telNum =  request.getParameter("tel_num");
-        Client client = new Client(firstName, lastName, patronName, passport,telNum);
+        Client client = new Client(id,firstName, lastName, patronName, passport,telNum);
         clientService.updateData(client);
         response.sendRedirect("list");
     }

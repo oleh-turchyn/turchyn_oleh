@@ -12,16 +12,17 @@ import java.io.IOException;
 public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String path = "/tour";
-////        ServletContext servletContext = getServletContext();
-////        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(path);
-////        requestDispatcher.forward(request,response);
         String action = request.getServletPath();
-        if(action.equals("/tour")){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("Tour.jsp");
-            dispatcher.forward(request, response);
-//            request.getRequestDispatcher("Tour.jsp").forward(request, response);
-        }
+        switch (action){
+            case "/tour":
+                RequestDispatcher dispatcher1 = request.getRequestDispatcher("Tour.jsp");
+                dispatcher1.forward(request, response);
+            case "/client":
+                RequestDispatcher dispatcher2 = request.getRequestDispatcher("Client.jsp");
+                dispatcher2.forward(request, response);
+            }
+
+
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

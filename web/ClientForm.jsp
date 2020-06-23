@@ -15,9 +15,9 @@
 
 <h1>Clients</h1>
 <h2>
-    <a href="<%=request.getContextPath()%>/new">Add New Client</a>
+    <a href="<%=request.getContextPath()%>/client/new">Add New Client</a>
     &nbsp;&nbsp;&nbsp;
-    <a href="<%=request.getContextPath()%>/list">List All Clients</a>
+    <a href="<%=request.getContextPath()%>/client/list">List All Clients</a>
 
 </h2>
 
@@ -31,10 +31,10 @@
             <table border="1" cellpadding="5">
                 <caption>
                     <h2>
-                        <c:if test="${tour != null}">
+                        <c:if test="${client != null}">
                             Edit client
                         </c:if>
-                        <c:if test="${tour == null}">
+                        <c:if test="${client == null}">
                             Add New client
                         </c:if>
                     </h2>
@@ -45,7 +45,7 @@
                 <tr>
                     <th>First name: </th>
                     <td>
-                        <input type="text" name="title" size="45"
+                        <input type="text" name="first_name" size="45"
                                value="<c:out value='${client.firstName}' />"
                         />
                     </td>
@@ -53,7 +53,7 @@
                 <tr>
                     <th>Last name: </th>
                     <td>
-                        <input type="text" name="location" size="45"
+                        <input type="text" name="last_name" size="45"
                                value="<c:out value='${client.lastName}' />"
                         />
                     </td>
@@ -61,7 +61,7 @@
                 <tr>
                     <th>Patronymic: </th>
                     <td>
-                        <input type="text" name="transport" size="45"
+                        <input type="text" name="patron_name" size="45"
                                value="<c:out value='${client.patrName}' />"
                         />
                     </td>
@@ -69,7 +69,7 @@
                 <tr>
                     <th>Passport: </th>
                     <td>
-                        <input type="text" name="nutrition" size="45"
+                        <input type="text" name="passport" size="45"
                                value="<c:out value='${client.passport}' />"
                         />
                     </td>
@@ -77,7 +77,7 @@
                 <tr>
                     <th>Telephone number: </th>
                     <td>
-                        <input type="text" name="duration" size="45"
+                        <input type="text" name="tel_num" size="45"
                                value="<c:out value='${client.telNumber}' />"
                         />
                     </td>
