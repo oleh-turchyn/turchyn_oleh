@@ -5,6 +5,7 @@ import com.turchyn.usermanagement.model.TourBase;
 import com.turchyn.usermanagement.service.TourService;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
-//@WebServlet("/tour")
+@WebServlet(urlPatterns = {"/tour/new","/tour/list","/tour/insert","/tour/delete","/tour/edit","/tour/update"})
 public class TourServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private TourDAO tourDAO;
@@ -33,22 +34,22 @@ public class TourServlet extends HttpServlet {
         String action =request.getServletPath();
         try {
             switch (action) {
-                case "/new":
+                case "/tour/new":
                     showNewForm(request, response);
                     break;
-                case "/test/tour/list":
+                case "/tour/list":
                     listTour(request, response);
                     break;
-                case "/insert":
+                case "/tour/insert":
                     insertTour(request, response);
                     break;
-                case "/delete":
+                case "/tour/delete":
                     deleteTour(request, response);
                     break;
-                case "/edit":
+                case "/tour/edit":
                     showEditForm(request, response);
                     break;
-                case "/update":
+                case "/tour/update":
                     updateTour(request, response);
                     break;
 //                default:
@@ -67,13 +68,13 @@ public class TourServlet extends HttpServlet {
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("Tour.jsp");
 //        dispatcher.forward(request, response);
 //        request.getRequestDispatcher("Tour.jsp").forward(request, response);
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("WEB-INF/Tour.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/Tour.jsp");
         rd.forward(request,response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("TourForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/TourForm.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -81,7 +82,7 @@ public class TourServlet extends HttpServlet {
             throws SQLException, IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
         TourBase existingTour = tourService.getDataById(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("TourForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/TourForm.jsp");
         request.setAttribute("tour", existingTour);
         dispatcher.forward(request, response);
     }

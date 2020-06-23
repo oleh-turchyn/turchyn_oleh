@@ -9,9 +9,9 @@
 
     <h1>Tours Management</h1>
     <h2>
-        <a href="<%=request.getContextPath()%>/new">Add New Tour</a>
+        <a href="<%=request.getContextPath()%>/tour/new">Add New Tour</a>
         &nbsp;&nbsp;&nbsp;
-        <a href="${pageContext.request.contextPath}/tour/list">List All Tour</a>
+        <a href="<%=request.getContextPath()%>/tour/list">List All Tour</a>
 
     </h2>
 
@@ -37,9 +37,9 @@
                 <td><c:out value="${tour.tourDuration}" /></td>
                 <td><c:out value="${tour.tourPrice}" /></td>
                 <td>
-                    <a href="<%=request.getContextPath()%>/edit?id=<c:out value='${tour.id}' />">Edit</a>
+                    <a href="<%=request.getContextPath()%>/tour/edit?id=<c:out value='${tour.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="<%=request.getContextPath()%>/delete?id=<c:out value='${tour.id}' />">Delete</a>
+                    <a href="<%=request.getContextPath()%>/tour/delete?id=<c:out value='${tour.id}' />">Delete</a>
                 </td>
             </tr>
         </c:forEach>

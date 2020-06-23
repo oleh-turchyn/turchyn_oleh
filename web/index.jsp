@@ -15,7 +15,7 @@
 <div>
     <a href="<%=request.getContextPath()%>/tour">Tours</a>
     &nbsp;&nbsp;&nbsp;
-    <button onclick="location.href='/test/tour'">List users</button>
+<%--    <button onclick="location.href='/test/tour'">List users</button>--%>
 <%--    <a href="<%=request.getContextPath()%>/list">List All Tour</a>--%>
 </div>
 </body>

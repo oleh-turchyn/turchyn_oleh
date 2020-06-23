@@ -20,32 +20,32 @@
 <!--        <param-name>jdbcPassword</param-name>-->
 <!--        <param-value> </param-value>-->
 <!--    </context-param>-->
-    <servlet>
-        <servlet-name>MainServlet</servlet-name>
-        <servlet-class>com.turchyn.usermanagement.webs.MainServlet</servlet-class>
-    </servlet>
+<!--    <servlet>-->
+<!--        <servlet-name>MainServlet</servlet-name>-->
+<!--        <servlet-class>com.turchyn.usermanagement.webs.MainServlet</servlet-class>-->
+<!--    </servlet>-->
 
-    <servlet-mapping>
-        <servlet-name>MainServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>TourServlet</servlet-name>
-        <servlet-class>com.turchyn.usermanagement.webs.TourServlet</servlet-class>
-    </servlet>
-      <servlet-mapping>
-        <servlet-name>TourServlet</servlet-name>
-        <url-pattern>/test/tour</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>ClientServlet</servlet-name>
-        <servlet-class>com.turchyn.usermanagement.webs.ClientServlet</servlet-class>
-    </servlet>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>MainServlet</servlet-name>-->
+<!--        <url-pattern>/</url-pattern>-->
+<!--    </servlet-mapping>-->
+<!--    <servlet>-->
+<!--        <servlet-name>TourServlet</servlet-name>-->
+<!--        <servlet-class>com.turchyn.usermanagement.webs.TourServlet</servlet-class>-->
+<!--    </servlet>-->
+<!--      <servlet-mapping>-->
+<!--        <servlet-name>TourServlet</servlet-name>-->
+<!--        <url-pattern>/test/tour</url-pattern>-->
+<!--    </servlet-mapping>-->
+<!--    <servlet>-->
+<!--        <servlet-name>ClientServlet</servlet-name>-->
+<!--        <servlet-class>com.turchyn.usermanagement.webs.ClientServlet</servlet-class>-->
+<!--    </servlet>-->
 
-    <servlet-mapping>
-        <servlet-name>ClientServlet</servlet-name>
-        <url-pattern>/client</url-pattern>
-    </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>ClientServlet</servlet-name>-->
+<!--        <url-pattern>/client</url-pattern>-->
+<!--    </servlet-mapping>-->
 
 
 
