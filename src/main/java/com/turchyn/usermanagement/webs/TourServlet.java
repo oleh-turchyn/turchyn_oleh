@@ -1,23 +1,23 @@
 package com.turchyn.usermanagement.webs;
 
+import org.apache.log4j.Logger;
 import com.turchyn.usermanagement.dao.TourDAO;
 import com.turchyn.usermanagement.model.TourBase;
 import com.turchyn.usermanagement.service.TourService;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/tour/new","/tour/list","/tour/insert","/tour/delete","/tour/edit","/tour/update"})
 public class TourServlet extends HttpServlet {
+    private static Logger logger = Logger.getLogger(TourServlet.class.getName());
     private static final long serialVersionUID = 1L;
     private TourDAO tourDAO;
     private TourService tourService = new TourService();

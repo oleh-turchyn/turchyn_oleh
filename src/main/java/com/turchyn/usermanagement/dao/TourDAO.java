@@ -1,6 +1,7 @@
 package com.turchyn.usermanagement.dao;
 
 import com.turchyn.usermanagement.model.TourBase;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,10 +10,7 @@ import java.util.List;
 import static com.turchyn.tool.ConnectionDB.*;
 
 public class TourDAO implements GeneralDAO<TourBase> {
-    private static final String DB_DRIVER = "org.h2.Driver";
-    private String jdbcURL;
-    private String jdbcUsername;
-    private String jdbcPassword;
+    private static Logger logger = Logger.getLogger(TourDAO.class.getName());
     private Connection jdbcConnection;
     private static final String INSERT_TOURS_SQL = "INSERT INTO tours" + "  (title, location, transport, nutrition, duration, price) VALUES " +
             " (?, ?, ?, ?, ?, ?);";

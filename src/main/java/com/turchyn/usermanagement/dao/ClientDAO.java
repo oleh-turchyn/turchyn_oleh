@@ -1,7 +1,7 @@
 package com.turchyn.usermanagement.dao;
 
 import com.turchyn.usermanagement.model.Client;
-import com.turchyn.usermanagement.model.TourBase;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import java.util.List;
 import static com.turchyn.tool.ConnectionDB.*;
 
 public class ClientDAO implements GeneralDAO<Client> {
+    private static Logger logger = Logger.getLogger(ClientDAO.class.getName());
     private Connection jdbcConnection;
     private static final String INSERT_CLIENTS_SQL = "INSERT INTO clients" + "  (first_name, last_name, patron_name, passport, tel_num) VALUES " +
             " (?, ?, ?, ?, ?);";

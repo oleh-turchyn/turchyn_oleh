@@ -3,6 +3,7 @@ package com.turchyn.usermanagement.webs;
 import com.turchyn.usermanagement.dao.ClientDAO;
 import com.turchyn.usermanagement.model.Client;
 import com.turchyn.usermanagement.service.ClientService;
+import org.apache.log4j.Logger;
 
 
 import javax.servlet.RequestDispatcher;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 import java.util.List;
 @WebServlet(urlPatterns = {"/client/new","/client/list","/client/insert","/client/delete","/client/edit","/client/update"})
 public class ClientServlet extends HttpServlet {
+    private static Logger logger = Logger.getLogger(ClientServlet.class.getName());
     private static final long serialVersionUID = 1L;
     private ClientDAO clientDAO;
     private ClientService clientService = new ClientService();
