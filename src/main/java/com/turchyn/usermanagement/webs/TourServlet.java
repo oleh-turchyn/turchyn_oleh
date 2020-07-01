@@ -37,9 +37,6 @@ public class TourServlet extends HttpServlet {
                 case "/tour/new":
                     showNewForm(request, response);
                     break;
-                case "/tour/list":
-                    listTour(request, response);
-                    break;
                 case "/tour/insert":
                     insertTour(request, response);
                     break;
@@ -52,9 +49,9 @@ public class TourServlet extends HttpServlet {
                 case "/tour/update":
                     updateTour(request, response);
                     break;
-//                default:
-//                    listTour(request, response);
-//                    break;
+                default:
+                    listTour(request,response);
+                    break;
             }
         } catch (SQLException ex) {
             throw new ServletException(ex);

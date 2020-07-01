@@ -10,28 +10,29 @@ import java.util.List;
 public class TourService implements IService<TourBase> {
     private static Logger logger = Logger.getLogger(TourService.class.getName());
     TourDAO tourDAO = new TourDAO();
+
     @Override
-    public void addData(TourBase tourBase) throws SQLException {
+    public void addData(TourBase tourBase) {
         tourDAO.create(tourBase);
     }
 
     @Override
-    public List getAllData() throws SQLException {
-        return  tourDAO.read();
+    public List getAllData() {
+        return tourDAO.read();
     }
 
     @Override
-    public void deleteData(TourBase tourBase) throws SQLException {
+    public void deleteData(TourBase tourBase) {
         tourDAO.delete(tourBase);
     }
 
     @Override
-    public void updateData(TourBase tourBase) throws SQLException {
+    public void updateData(TourBase tourBase) {
         tourDAO.update(tourBase);
     }
 
     @Override
-    public TourBase getDataById(int id) throws SQLException {
+    public TourBase getDataById(int id) {
         return tourDAO.getById(id);
     }
 }

@@ -10,28 +10,29 @@ import java.util.List;
 public class ClientService implements IService<Client> {
     private static Logger logger = Logger.getLogger(ClientService.class.getName());
     ClientDAO clientDAO = new ClientDAO();
+
     @Override
-    public void addData(Client client) throws SQLException {
+    public void addData(Client client) {
         clientDAO.create(client);
     }
 
     @Override
-    public List getAllData() throws SQLException {
+    public List getAllData() {
         return clientDAO.read();
     }
 
     @Override
-    public void deleteData(Client client) throws SQLException {
+    public void deleteData(Client client) {
         clientDAO.delete(client);
     }
 
     @Override
-    public void updateData(Client client) throws SQLException {
+    public void updateData(Client client) {
         clientDAO.update(client);
     }
 
     @Override
-    public Client getDataById(int id) throws SQLException {
+    public Client getDataById(int id) {
         return clientDAO.getById(id);
     }
 }

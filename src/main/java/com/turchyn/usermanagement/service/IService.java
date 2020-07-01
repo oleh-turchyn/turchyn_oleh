@@ -6,14 +6,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface IService<T> {
-    void addData(T t) throws SQLException;
+    void addData(T t);
 
-    List getAllData() throws SQLException;
+    List getAllData();
 
-    void deleteData(T t) throws SQLException;
+    void deleteData(T t);
 
-    void updateData(T t) throws SQLException;
+    void updateData(T t);
 
-    T getDataById(int id) throws SQLException;
+    T getDataById(int id);
 
 }

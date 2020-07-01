@@ -5,17 +5,17 @@ import java.util.List;
 
 public interface GeneralDAO<T> {
     //create
-    boolean create(T t) throws SQLException;
+    void create(T t);
 
     //read
-    List<T> read() throws SQLException;
+    List<T> read();
 
-    T getById(int id) throws SQLException;
+    T getById(int id);
 
     //update
-    boolean update(T t) throws SQLException;
+    void update(T t);
 
     //delete
-    boolean delete(T t) throws SQLException;
+    void delete(T t);
 
 }
