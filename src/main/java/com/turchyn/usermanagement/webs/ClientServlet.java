@@ -15,7 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-@WebServlet(urlPatterns = {"/client/new","/client/list","/client/insert","/client/delete","/client/edit","/client/update"})
+
+@WebServlet(urlPatterns = {"/client/new", "/client/list", "/client/insert", "/client/delete", "/client/edit", "/client/update"})
 public class ClientServlet extends HttpServlet {
     private static Logger logger = Logger.getLogger(ClientServlet.class.getName());
     private static final long serialVersionUID = 1L;
@@ -64,12 +65,14 @@ public class ClientServlet extends HttpServlet {
         List<Client> listTours = clientService.getAllData();
         request.setAttribute("listClients", listTours);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Client.jsp");
+        logger.info("show list of clients - ok");
         dispatcher.forward(request, response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/ClientForm.jsp");
+        logger.info("show new client - ok");
         dispatcher.forward(request, response);
     }
 
@@ -79,18 +82,20 @@ public class ClientServlet extends HttpServlet {
         Client existingClient = clientService.getDataById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/ClientForm.jsp");
         request.setAttribute("client", existingClient);
+        logger.info("show edit client - ok");
         dispatcher.forward(request, response);
     }
 
     private void insertClient(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException {
         String firstName = request.getParameter("first_name");
-        String lastName =  request.getParameter("last_name");
-        String patronName =  request.getParameter("patron_name");
-        String passport =  request.getParameter("passport");
-        String telNum =  request.getParameter("tel_num");
-        Client client = new Client(firstName, lastName, patronName, passport,telNum);
+        String lastName = request.getParameter("last_name");
+        String patronName = request.getParameter("patron_name");
+        String passport = request.getParameter("passport");
+        String telNum = request.getParameter("tel_num");
+        Client client = new Client(firstName, lastName, patronName, passport, telNum);
         clientService.addData(client);
+        logger.info("insert client - ok");
         response.sendRedirect("list");
     }
 
@@ -99,6 +104,7 @@ public class ClientServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Client client = new Client(id);
         clientService.deleteData(client);
+        logger.info("delete client - ok");
         response.sendRedirect("list");
     }
 
@@ -106,12 +112,13 @@ public class ClientServlet extends HttpServlet {
             throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         String firstName = request.getParameter("first_name");
-        String lastName =  request.getParameter("last_name");
-        String patronName =  request.getParameter("patron_name");
-        String passport =  request.getParameter("passport");
-        String telNum =  request.getParameter("tel_num");
-        Client client = new Client(id,firstName, lastName, patronName, passport,telNum);
+        String lastName = request.getParameter("last_name");
+        String patronName = request.getParameter("patron_name");
+        String passport = request.getParameter("passport");
+        String telNum = request.getParameter("tel_num");
+        Client client = new Client(id, firstName, lastName, patronName, passport, telNum);
         clientService.updateData(client);
+        logger.info("update client - ok");
         response.sendRedirect("list");
     }
 

@@ -19,7 +19,7 @@ public class ConnectionDB {
         try {
             Class.forName(DB_DRIVER);
             jdbcConnection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-            logger.info("Connected to database  is successfully");
+            logger.info("Connection to database  is successfully");
         } catch (SQLException | ClassNotFoundException e) {
             logger.error("Problem with connection to database");
             logger.error(e.getMessage());
@@ -40,28 +40,4 @@ public class ConnectionDB {
     public Connection getConnection() {
         return jdbcConnection;
     }
-
-//    public static void connect() throws SQLException {
-//        if (jdbcConnection == null || jdbcConnection.isClosed()) {
-//            try {
-//                Class.forName(DB_DRIVER);
-//                jdbcConnection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-//                logger.info("Connected to database  is successfully");
-//            } catch (ClassNotFoundException e) {
-//                logger.error("Problem with connection to database");
-//                logger.error(e.getMessage());
-//                throw new SQLException(e);
-//            }
-//
-//        }
-//    }
-//
-//    public static void disconnect() throws SQLException {
-//        if (jdbcConnection != null && !jdbcConnection.isClosed()) {
-//            jdbcConnection.close();
-//        }
-//    }
-//    public static Connection getConnection() {
-//        return jdbcConnection;
-//    }
 }

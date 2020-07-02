@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/tour/new","/tour/list","/tour/insert","/tour/delete","/tour/edit","/tour/update"})
+@WebServlet(urlPatterns = {"/tour/new", "/tour/list", "/tour/insert", "/tour/delete", "/tour/edit", "/tour/update"})
 public class TourServlet extends HttpServlet {
     private static Logger logger = Logger.getLogger(TourServlet.class.getName());
     private static final long serialVersionUID = 1L;
@@ -31,7 +31,7 @@ public class TourServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action =request.getServletPath();
+        String action = request.getServletPath();
         try {
             switch (action) {
                 case "/tour/new":
@@ -50,7 +50,7 @@ public class TourServlet extends HttpServlet {
                     updateTour(request, response);
                     break;
                 default:
-                    listTour(request,response);
+                    listTour(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -63,12 +63,14 @@ public class TourServlet extends HttpServlet {
         List<TourBase> listTours = tourService.getAllData();
         request.setAttribute("listTours", listTours);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/Tour.jsp");
-        rd.forward(request,response);
+        logger.info("show list of tours - ok");
+        rd.forward(request, response);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/TourForm.jsp");
+        logger.info("show new form - ok");
         dispatcher.forward(request, response);
     }
 
@@ -78,6 +80,7 @@ public class TourServlet extends HttpServlet {
         TourBase existingTour = tourService.getDataById(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/TourForm.jsp");
         request.setAttribute("tour", existingTour);
+        logger.info("show edit form - ok");
         dispatcher.forward(request, response);
     }
 
@@ -91,14 +94,16 @@ public class TourServlet extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
         TourBase tour = new TourBase(title, location, transport, nutrition, duration, price);
         tourService.addData(tour);
+        logger.info("insert tour - ok");
         response.sendRedirect("list");
     }
 
     private void deleteTour(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+            throws IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         TourBase tour = new TourBase(id);
         tourService.deleteData(tour);
+        logger.info("delete tour - ok");
         response.sendRedirect("list");
     }
 
@@ -113,6 +118,7 @@ public class TourServlet extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
         TourBase tour = new TourBase(id, title, location, transport, nutrition, duration, price);
         tourService.updateData(tour);
+        logger.info("update tour - ok");
         response.sendRedirect("list");
     }
 }

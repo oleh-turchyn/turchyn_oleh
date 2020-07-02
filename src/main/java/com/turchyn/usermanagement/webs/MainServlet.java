@@ -10,17 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 @WebServlet("/")
 public class MainServlet extends HttpServlet {
-    //private static Logger logger = Logger.getLogger(MainServlet.class.getName());
+    private static Logger logger = Logger.getLogger(MainServlet.class.getName());
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
         switch (action){
             case "/tour":
                 RequestDispatcher dispatcher1 = request.getRequestDispatcher("Tour.jsp");
+                logger.info("redirect to tour page - ok");
                 dispatcher1.forward(request, response);
                 break;
             case "/client":
                 RequestDispatcher dispatcher2 = request.getRequestDispatcher("Client.jsp");
+                logger.info("redirect to client page - ok");
                 dispatcher2.forward(request, response);
                 break;
             }
