@@ -1,6 +1,7 @@
 package com.turchyn.usermanagement.webs;
 
 import com.turchyn.usermanagement.dao.OrderDAO;
+import com.turchyn.usermanagement.model.Client;
 import com.turchyn.usermanagement.model.Order;
 import com.turchyn.usermanagement.service.OrderService;
 import org.apache.log4j.Logger;
@@ -29,19 +30,19 @@ public class OrderServlet extends HttpServlet {
         String action = request.getServletPath();
         try {
             switch (action) {
-//                case "/client/new":
+//                case "/order/new":
 //                    showNewForm(request, response);
 //                    break;
-//                case "/client/insert":
+//                case "/order/insert":
 //                    insertClient(request, response);
 //                    break;
-//                case "/client/delete":
-//                    deleteClient(request, response);
-//                    break;
+                case "/order/delete":
+                    deleteOrder(request, response);
+                    break;
 //                case "/client/edit":
 //                    showEditForm(request, response);
 //                    break;
-//                case "/client/update":
+//                case "/order/update":
 //                    updateClient(request, response);
 //                    break;
                 default:
@@ -59,5 +60,13 @@ public class OrderServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Order.jsp");
         logger.info("show list of orders - ok");
         dispatcher.forward(request, response);
+    }
+    private void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws
+            SQLException, IOException, ServletException{
+        int orderId = Integer.parseInt(request.getParameter("orderId"));
+        Order order = new Order(orderId);
+        orderService.deleteData(order);
+        logger.info("delete order - ok");
+        response.sendRedirect("list");
     }
 }

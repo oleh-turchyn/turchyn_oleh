@@ -21,7 +21,7 @@ public class OrderService implements IService<Order> {
 
     @Override
     public void deleteData(Order order) {
-
+        orderDAO.delete(order);
     }
 
     @Override
