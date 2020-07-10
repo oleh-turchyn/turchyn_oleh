@@ -16,6 +16,7 @@
     <a href="<%=request.getContextPath()%>/tour">Tours</a>
     &nbsp;&nbsp
     <a href="<%=request.getContextPath()%>/client">Clients</a>
+    <a href="<%=request.getContextPath()%>/order">Orders</a>
 
 </div>
 </body>

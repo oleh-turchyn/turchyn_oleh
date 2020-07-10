@@ -25,6 +25,11 @@ public class MainServlet extends HttpServlet {
                 logger.info("redirect to client page - ok");
                 dispatcher2.forward(request, response);
                 break;
+            case"/order":
+                RequestDispatcher dispatcher3 = request.getRequestDispatcher("Order.jsp");
+                logger.info("redirect to order page - ok");
+                dispatcher3.forward(request,response);
+                break;
             }
     }
     @Override
