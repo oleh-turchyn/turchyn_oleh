@@ -28,21 +28,19 @@
         <tr>
             <th>ID</th>
             <th>Order date</th>
-            <th>Client name</th>
-            <th>Client surname</th>
-            <th>Tour title</th>
+            <th>Client code</th>
+            <th>Tour code</th>
         </tr>
         <c:forEach var="order" items="${listOrders}">
             <tr>
-                <td><c:out value="${order.orderId}" /></td>
+                <td><c:out value="${order.id}" /></td>
                 <td><c:out value="${order.dateOrder}" /></td>
-                <td><c:out value="${order.clientName}" /></td>
-                <td><c:out value="${order.clientSurname}" /></td>
-                <td><c:out value="${order.titleTour}" /></td>
+                <td><c:out value="${order.clientCode}" /></td>
+                <td><c:out value="${order.tourCode}" /></td>
                 <td>
-                    <a href="<%=request.getContextPath()%>/order/edit?id=<c:out value='${order.orderId}' />">Edit</a>
+                    <a href="<%=request.getContextPath()%>/order/edit?id=<c:out value='${order.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="<%=request.getContextPath()%>/order/delete?id=<c:out value='${order.orderId}' />">Delete</a>
+                    <a href="<%=request.getContextPath()%>/order/delete?id=<c:out value='${order.id}' />">Delete</a>
                 </td>
             </tr>
         </c:forEach>
