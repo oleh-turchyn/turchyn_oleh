@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-public class OrderDetailDAO implements GeneralDAO<OrderDetail> {
+public class OrderDetailDAO {
     private static Logger logger = Logger.getLogger(OrderDetailDAO.class.getName());
     private static final String SELECT_ALL_ORDERS = "SELECT\n" +
             "    to.ID  AS ID,\n" +
@@ -24,11 +24,7 @@ public class OrderDetailDAO implements GeneralDAO<OrderDetail> {
             "INNER JOIN\n" +
             "    TOURS t ON to.TOUR_CODE = t.ID";
 
-    @Override
-    public void create(OrderDetail orderDetail) {
-    }
 
-    @Override
     public List<OrderDetail> read() {
         List<OrderDetail> listOrderDetail = new ArrayList<>();
         try (Connection c = ConnectionDB.getInstance().getConnection();
@@ -51,17 +47,4 @@ public class OrderDetailDAO implements GeneralDAO<OrderDetail> {
         return listOrderDetail;
     }
 
-    @Override
-    public OrderDetail getById(int id) {
-        return null;
-    }
-
-    @Override
-    public void update(OrderDetail orderDetail) {
-
-    }
-
-    @Override
-    public void delete(OrderDetail orderDetail) {
-    }
 }
