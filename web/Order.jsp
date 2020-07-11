@@ -20,6 +20,7 @@
     &nbsp;&nbsp;&nbsp;
     <a href="<%=request.getContextPath()%>/order/list">List All Order</a>
 
+    <a href="<%=request.getContextPath()%>/orderDetail/list">Details of orders</a>
 
 </h2>
 

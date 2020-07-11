@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet (urlPatterns = {"/orderDetails/list"})
+@WebServlet("/orderDetail/list")
 public class OrderDetailServlet extends HttpServlet {
     private static Logger logger = Logger.getLogger(OrderDetailServlet.class.getName());
     private static final long serialVersionUID = 1L;
@@ -26,21 +26,22 @@ public class OrderDetailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             listOrder(request, response);
         } catch (SQLException e) {
-            logger.error("Some problems with OrderDetail servlet");
+            logger.error("Some problems with order details servlet");
             logger.error(e.getMessage());
         }
     }
 
     private void listOrder(HttpServletRequest request, HttpServletResponse response) throws
             SQLException, IOException, ServletException {
-        List<OrderDetail> listOrders = orderDetailService.getAllData();
-        request.setAttribute("listOrders", listOrders);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/Order.jsp");
-        logger.info("show list of orders - ok");
+        List<OrderDetail> listOrderDetails = orderDetailService.getAllData();
+        request.setAttribute("listOrderDetails", listOrderDetails);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/OrderDetail.jsp");
+        logger.info("show list of order details - ok");
         dispatcher.forward(request, response);
     }
 
