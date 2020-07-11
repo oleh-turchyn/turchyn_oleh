@@ -33,10 +33,10 @@
                 <caption>
                     <h2>
                         <c:if test="${order != null}">
-                            Edit order
+                            Edit orderDetail
                         </c:if>
                         <c:if test="${order == null}">
-                            Add new order
+                            Add new orderDetail
                         </c:if>
                     </h2>
                 </caption>

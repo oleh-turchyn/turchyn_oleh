@@ -2,23 +2,23 @@ package com.turchyn.usermanagement.model;
 
 import java.io.Serializable;
 
-public class Order implements Serializable {
+public class OrderDetail implements Serializable {
     protected int orderId;
     protected String dateOrder;
     protected String clientName;
     protected String clientSurname;
     protected String titleTour;
 
-    public Order(){}
-    public Order(int orderId){
+    public OrderDetail(){}
+    public OrderDetail(int orderId){
         this.orderId=orderId;
     }
-    public Order(int orderId,String dateOrder, String clientName,String clientSurname,String titleTour){
+    public OrderDetail(int orderId, String dateOrder, String clientName, String clientSurname, String titleTour){
         this(dateOrder,clientName,clientSurname,titleTour);
         this.orderId = orderId;
     }
 
-    public Order(String dateOrder, String clientName, String clientSurname, String titleTour) {
+    public OrderDetail(String dateOrder, String clientName, String clientSurname, String titleTour) {
         this.dateOrder = dateOrder;
         this.clientName = clientName;
         this.clientSurname = clientSurname;

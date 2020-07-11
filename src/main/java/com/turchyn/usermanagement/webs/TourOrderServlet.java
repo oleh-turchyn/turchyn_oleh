@@ -1,7 +1,5 @@
 package com.turchyn.usermanagement.webs;
 
-import com.turchyn.usermanagement.model.Order;
-import com.turchyn.usermanagement.model.TourBase;
 import com.turchyn.usermanagement.model.TourOrder;
 import com.turchyn.usermanagement.service.TourOrderService;
 import org.apache.log4j.Logger;
@@ -57,7 +55,7 @@ public class TourOrderServlet extends HttpServlet {
 
     private void listOrder(HttpServletRequest request, HttpServletResponse response) throws
             SQLException, IOException, ServletException {
-        List<Order> listOrders = tourOrderService.getAllData();
+        List<TourOrder> listOrders = tourOrderService.getAllData();
         request.setAttribute("listOrders", listOrders);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/Order.jsp");
         logger.info("show list of orders - ok");

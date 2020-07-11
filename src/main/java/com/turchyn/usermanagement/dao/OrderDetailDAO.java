@@ -1,7 +1,7 @@
 package com.turchyn.usermanagement.dao;
 
 import com.turchyn.tool.ConnectionDB;
-import com.turchyn.usermanagement.model.Order;
+import com.turchyn.usermanagement.model.OrderDetail;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,8 +9,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-public class OrderDAO implements GeneralDAO<Order> {
-    private static Logger logger = Logger.getLogger(OrderDAO.class.getName());
+public class OrderDetailDAO implements GeneralDAO<OrderDetail> {
+    private static Logger logger = Logger.getLogger(OrderDetailDAO.class.getName());
     private static final String SELECT_ALL_ORDERS = "SELECT\n" +
             "    to.ORDER_ID  AS ID,\n" +
             "    to.DATE_ORDER,\n" +
@@ -31,7 +31,7 @@ public class OrderDAO implements GeneralDAO<Order> {
 
 
     @Override
-    public void create(Order order) {
+    public void create(OrderDetail orderDetail) {
 //        try (Connection c = ConnectionDB.getInstance().getConnection();
 //             PreparedStatement statement = c.prepareStatement(INSERT_ORDER_SQL);
 //        ) {
@@ -46,8 +46,8 @@ public class OrderDAO implements GeneralDAO<Order> {
     }
 
     @Override
-    public List<Order> read() {
-        List<Order> listOrder = new ArrayList<>();
+    public List<OrderDetail> read() {
+        List<OrderDetail> listOrderDetail = new ArrayList<>();
         try (Connection c = ConnectionDB.getInstance().getConnection();
              Statement statement = c.createStatement();
              ResultSet rs = statement.executeQuery(SELECT_ALL_ORDERS);
@@ -58,28 +58,28 @@ public class OrderDAO implements GeneralDAO<Order> {
                 String clientName = rs.getString("clientname");
                 String clientSurname = rs.getString("clientsurname");
                 String title = rs.getString("tourtitle");
-                Order order = new Order(orderId, date, clientName, clientSurname, title);
-                listOrder.add(order);
+                OrderDetail orderDetail = new OrderDetail(orderId, date, clientName, clientSurname, title);
+                listOrderDetail.add(orderDetail);
             }
         } catch (SQLException e) {
             logger.error("Some problems with view list of OrderDAO");
             logger.error(e.getMessage());
         }
-        return listOrder;
+        return listOrderDetail;
     }
 
     @Override
-    public Order getById(int id) {
+    public OrderDetail getById(int id) {
         return null;
     }
 
     @Override
-    public void update(Order order) {
+    public void update(OrderDetail orderDetail) {
 
     }
 
     @Override
-    public void delete(Order order) {
+    public void delete(OrderDetail orderDetail) {
 //        try (
 //                Connection c = ConnectionDB.getInstance().getConnection();
 //                PreparedStatement statement = c.prepareStatement(DELETE_ORDER_SQL);
