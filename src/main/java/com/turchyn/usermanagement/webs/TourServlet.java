@@ -1,7 +1,6 @@
 package com.turchyn.usermanagement.webs;
 
 import org.apache.log4j.Logger;
-import com.turchyn.usermanagement.dao.TourDAO;
 import com.turchyn.usermanagement.model.TourBase;
 import com.turchyn.usermanagement.service.TourService;
 
@@ -19,12 +18,7 @@ import java.util.List;
 public class TourServlet extends HttpServlet {
     private static Logger logger = Logger.getLogger(TourServlet.class.getName());
     private static final long serialVersionUID = 1L;
-    private TourDAO tourDAO;
     private TourService tourService = new TourService();
-
-    public void init() {
-        tourDAO = new TourDAO();
-    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

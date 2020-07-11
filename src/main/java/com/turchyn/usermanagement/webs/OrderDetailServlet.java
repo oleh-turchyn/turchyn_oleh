@@ -1,7 +1,5 @@
 package com.turchyn.usermanagement.webs;
 
-
-import com.turchyn.usermanagement.dao.OrderDetailDAO;
 import com.turchyn.usermanagement.model.OrderDetail;
 import com.turchyn.usermanagement.service.OrderDetailService;
 import org.apache.log4j.Logger;
@@ -20,7 +18,6 @@ import java.util.List;
 public class OrderDetailServlet extends HttpServlet {
     private static Logger logger = Logger.getLogger(OrderDetailServlet.class.getName());
     private static final long serialVersionUID = 1L;
-    private OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
     private OrderDetailService orderDetailService = new OrderDetailService();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
