@@ -16,7 +16,11 @@ public class TourDAO implements GeneralDAO<TourBase> {
     private static final String SELECT_ALL_TOURS = "select * from tours";
     private static final String DELETE_TOURS_SQL = "delete from tours where id=?";
     private static final String UPDATE_TOURS_SQL = "update tours set title = ?, location = ?, transport = ?, nutrition = ?, duration = ?, price = ? where id = ?;";
-
+    private ConnectionDB connectionDB;
+    public TourDAO(){}
+    public TourDAO(ConnectionDB connectionDB){
+        this.connectionDB=connectionDB;
+    }
     @Override
     public void create(TourBase tour) {
         try (Connection c = ConnectionDB.getInstance().getConnection();
