@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientDAO implements GeneralDAO<Client> {
+    private ConnectionDB connectionDB;
+    public ClientDAO(){}
+    public ClientDAO(ConnectionDB connectionDB){
+        this.connectionDB=connectionDB;
+    }
     private static Logger logger = Logger.getLogger(ClientDAO.class.getName());
     private static final String INSERT_CLIENTS_SQL = "INSERT INTO clients" + "  (first_name, last_name, patron_name, passport, tel_num) VALUES " +
             " (?, ?, ?, ?, ?);";

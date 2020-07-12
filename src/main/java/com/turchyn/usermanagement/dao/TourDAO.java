@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TourDAO implements GeneralDAO<TourBase> {
+    private ConnectionDB connectionDB;
+    public TourDAO(){}
+    public TourDAO(ConnectionDB connectionDB){
+        this.connectionDB=connectionDB;
+    }
     private static Logger logger = Logger.getLogger(TourDAO.class.getName());
     private static final String INSERT_TOURS_SQL = "INSERT INTO tours" + "  (title, location, transport, nutrition, duration, price) VALUES " +
             " (?, ?, ?, ?, ?, ?);";
@@ -16,11 +21,7 @@ public class TourDAO implements GeneralDAO<TourBase> {
     private static final String SELECT_ALL_TOURS = "select * from tours";
     private static final String DELETE_TOURS_SQL = "delete from tours where id=?";
     private static final String UPDATE_TOURS_SQL = "update tours set title = ?, location = ?, transport = ?, nutrition = ?, duration = ?, price = ? where id = ?;";
-    private ConnectionDB connectionDB;
-    public TourDAO(){}
-    public TourDAO(ConnectionDB connectionDB){
-        this.connectionDB=connectionDB;
-    }
+
     @Override
     public void create(TourBase tour) {
         try (Connection c = ConnectionDB.getInstance().getConnection();

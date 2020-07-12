@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TourOrderDAO implements  GeneralDAO<TourOrder>{
+    private ConnectionDB connectionDB;
+    public TourOrderDAO(){}
+    public TourOrderDAO(ConnectionDB connectionDB){
+        this.connectionDB=connectionDB;
+    }
     private static Logger logger = Logger.getLogger(TourOrderDAO.class.getName());
         private static final String DELETE_ORDER_SQL = "delete from TOURORDER where id = ?";
     private static final String INSERT_ORDER_SQL = "INSERT INTO TOURORDER" + "  (date_order, client_code, tour_code) VALUES " +

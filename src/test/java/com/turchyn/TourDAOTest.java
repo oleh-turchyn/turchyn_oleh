@@ -63,12 +63,12 @@ public class TourDAOTest {
 //        new TourDAO(connectionDB).create(null);
 //    }
     @Test
-    public void createTour(){
+    public void createTourTest(){
         new TourDAO(connectionDB).create(tour);
     }
 
     @Test
-    public void createAndGetByIdTour() throws Exception{
+    public void createAndGetByIdTourTest() throws Exception{
         TourDAO tourDAO = new TourDAO(connectionDB);
         tourDAO.create(tour);
         TourBase t1 = tourDAO.getById(1);
@@ -76,14 +76,14 @@ public class TourDAOTest {
     }
 
     @Test
-    public void deleteTour(){
+    public void deleteTourTest(){
         TourDAO tourDAO = new TourDAO(connectionDB);
         tourDAO.delete(tour);
         TourBase t1 = tourDAO.getById(1);
         assertNull(t1);
     }
     @Test
-    public void updateTour(){
+    public void updateTourTest(){
         TourDAO tourDAO = new TourDAO(connectionDB);
         tour.setTourPrice(500);
         tourDAO.update(tour);
@@ -92,7 +92,7 @@ public class TourDAOTest {
 
     }
     @Test
-    public void listAll(){
+    public void listAllTest(){
         TourDAO tourDAO = new TourDAO(connectionDB);
         List<TourBase> list = (List<TourBase>) tourDAO.read();
         assertNotNull(list.size());
