@@ -4,20 +4,77 @@
 <html>
 <head>
     <title>Tours Application</title>
+<%--    <link rel="stylesheet" href="res/styles/Tours.css">--%>
+<%--    <link rel="stylesheet" type="text/css" href="<c:url value="res/styles/Tours.css"/>"/>--%>
+    <style>
+        body {
+            <%--background: url(${pageContext.servletContext.contextPath}res\images\tab8.jpg) no-repeat center top / cover;--%>
+            background: linear-gradient(to bottom, #72eb78, #36da95);
+            color: #fff;
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            padding: 1em;
+        }
+        .nav_link{
+            color: #fff;
+            text-decoration: none;
+            transition: color .1s linear;
+
+        }
+        .nav_link:hover{
+            color: #333333;
+        }
+        .crud_link{
+            color: #0081cc;
+            text-decoration: none;
+        }
+        .container {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 1em;
+        }
+        .tours {
+            background: #f9feff;
+            color: #000;
+            border-collapse: collapse;
+            text-align: center;
+            /* border-radius: 15px; */
+        }
+        .caption{
+            color: #fff;
+        }
+        th, td:first-child {
+            background: #f1c836;
+            color: white;
+            padding: 10px 20px;
+        }
+        th, td {
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+        td {
+            background: #f9feff;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 
     <h1>Tours Management</h1>
     <h2>
-        <a href="<%=request.getContextPath()%>/tour/new">Add New Tour</a>
+        <a class="nav_link" href="<%=request.getContextPath()%>/tour/new">Add New Tour</a>
         &nbsp;&nbsp;&nbsp;
-        <a href="<%=request.getContextPath()%>/tour/list">List All Tour</a>
+        <a class="nav_link" href="<%=request.getContextPath()%>/tour/list">List All Tour</a>
 
     </h2>
 
-<div align="center">
-    <table border="1" cellpadding="5">
-        <caption><h2>List of Tours1</h2></caption>
+<div class="container" align="center">
+    <table class="tours" border="1" cellpadding="5">
+        <caption><h2 class="caption">List of Tours1</h2></caption>
         <tr>
             <th>ID</th>
             <th>Title</th>
@@ -37,9 +94,9 @@
                 <td><c:out value="${tour.tourDuration}" /></td>
                 <td><c:out value="${tour.tourPrice}" /></td>
                 <td>
-                    <a href="<%=request.getContextPath()%>/tour/edit?id=<c:out value='${tour.id}' />">Edit</a>
+                    <a class="crud_link" href="<%=request.getContextPath()%>/tour/edit?id=<c:out value='${tour.id}' />">Edit</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="<%=request.getContextPath()%>/tour/delete?id=<c:out value='${tour.id}' />">Delete</a>
+                    <a class="crud_link" href="<%=request.getContextPath()%>/tour/delete?id=<c:out value='${tour.id}' />">Delete</a>
                 </td>
             </tr>
         </c:forEach>

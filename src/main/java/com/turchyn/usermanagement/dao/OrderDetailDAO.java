@@ -10,6 +10,11 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 public class OrderDetailDAO {
+    private ConnectionDB connectionDB;
+    public OrderDetailDAO(){}
+    public OrderDetailDAO(ConnectionDB connectionDB){
+        this.connectionDB=connectionDB;
+    }
     private static Logger logger = Logger.getLogger(OrderDetailDAO.class.getName());
     private static final String SELECT_ALL_ORDERS = "SELECT\n" +
             "    to.ID  AS ID,\n" +

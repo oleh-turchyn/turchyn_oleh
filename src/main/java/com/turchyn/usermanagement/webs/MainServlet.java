@@ -12,7 +12,7 @@ import java.io.IOException;
 public class MainServlet extends HttpServlet {
     private static Logger logger = Logger.getLogger(MainServlet.class.getName());
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getServletPath();
         switch (action){
             case "/tour":
@@ -33,7 +33,7 @@ public class MainServlet extends HttpServlet {
             }
     }
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 }
