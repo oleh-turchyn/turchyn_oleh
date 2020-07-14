@@ -80,7 +80,7 @@
     &nbsp;&nbsp;&nbsp;
     <a class="nav_link" href="<%=request.getContextPath()%>/order/list">List All Order</a>
     &nbsp;&nbsp;&nbsp;
-    <a class="nav_link" href="<%=request.getContextPath()%>/orderDetail/list">Details of orders</a>
+    <a class="nav_link" href="<%=request.getContextPath()%>/orderDetail/list">Details of Orders</a>
     &nbsp;&nbsp;&nbsp;
     <a class="nav_link" href="<%=request.getContextPath()%>/">Main Page</a>
 
