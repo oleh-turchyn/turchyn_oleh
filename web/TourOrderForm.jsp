@@ -13,7 +13,6 @@
     <title>tour Store Application</title>
     <style>
         body {
-            /*background: url(../verstka/images/forest2.jpg) no-repeat center top / cover;*/
             background: linear-gradient(to bottom, #72eb78, #36da95);
             color: #fff;
             line-height: 1.6;
@@ -27,39 +26,42 @@
             margin-right: auto;
             padding: 1em;
         }
-        .center{
-            display: flex;
-            justify-content: center;
+
+        .nav_link{
+            color: #fff;
+            text-decoration: none;
+            transition: color .1s linear;
         }
+
+        .nav_link:hover{
+            color: #333333;
+        }
+
         .order_form {
             background: #f9feff;
             color: #000;
-            /*border-radius: 15px;*/
         }
 
         .order_form form {
-            /*display: grid;*/
-            /*grid-template-columns: 1fr 1fr;*/
-            /*grid-gap: 20px;*/
             color: #000;
         }
 
-        /*.tour_form form label {*/
-        /*    display: block;*/
-        /*}*/
+        .tour_form form label {
+            display: block;
+        }
 
         .order_form form p {
             margin: 0;
         }
 
         .order_form form input {
-            width: 100%;
+            width: 95%;
             padding: 1em;
-            /* border:1px solid #c9e6ff;   */
             border: 1px solid #36da95;
         }
 
         .order_form form .submit {
+            margin: 10px 0 10px 0;
             background: #b6b6b6;
             color: #fff;
             border: 0;
@@ -80,10 +82,9 @@
 <div class="container">
     <h1 class="title">Orders</h1>
     <h2>
-        <a class="nav_link" href="<%=request.getContextPath()%>/order/new">Add New Order</a>
-
         <a class="nav_link" href="<%=request.getContextPath()%>/order/list">List All Order</a>
-
+        &nbsp;&nbsp;&nbsp;
+        <a class="nav_link" href="<%=request.getContextPath()%>/">Main Page</a>
     </h2>
     <h2>
         <c:if test="${order != null}">

@@ -13,55 +13,58 @@
     <title>Tours Application</title>
     <style>
         body {
-        <%--background: url(${pageContext.servletContext.contextPath}res\images\tab8.jpg) no-repeat center top / cover;--%>
             background: linear-gradient(to bottom, #72eb78, #36da95);
             color: #fff;
             line-height: 1.6;
             font-family: 'Montserrat', sans-serif;
             padding: 1em;
         }
+
         .nav_link{
             color: #fff;
             text-decoration: none;
             transition: color .1s linear;
 
         }
+
         .nav_link:hover{
             color: #333333;
         }
-        .crud_link{
-            color: #0081cc;
-            text-decoration: none;
-        }
+
         .container {
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             padding: 1em;
         }
-        .tours {
+
+        .details {
             background: #f9feff;
             color: #000;
             border-collapse: collapse;
             text-align: center;
-            /* border-radius: 15px; */
+            border: 1px solid #fff;
         }
+
         .caption{
             color: #fff;
         }
+
         th, td:first-child {
             background: #f1c836;
             color: white;
             padding: 10px 20px;
         }
+
         th, td {
             border-style: solid;
             border-width: 0 1px 1px 0;
-            border-color: white;
-        }
+            border-color: #2c3734;        }
+
         td {
             background: #f9feff;
         }
+
         th:first-child, td:first-child {
             text-align: left;
         }
@@ -71,10 +74,12 @@
 
 <h1>Orders Details</h1>
 <h2>
-<%--    <a href="<%=request.getContextPath()%>/orderDetail/list">List of Details</a>--%>
+    <a class="nav_link" href="<%=request.getContextPath()%>/order/list">List All Order</a>
+    &nbsp;&nbsp;&nbsp;
+    <a class="nav_link" href="<%=request.getContextPath()%>/">Main Page</a>
 </h2>
 <div class="container" align="center">
-    <table class="tours" border="1" cellpadding="5">
+    <table class="details" border="1" cellpadding="5">
         <caption><h2 class="caption">List of Order Details</h2></caption>
         <tr>
             <th>ID</th>
