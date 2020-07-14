@@ -107,23 +107,23 @@
                 </c:if>
                 <p>
                     <label>First name</label>
-                    <input type="text" name="title" size="45" value="<c:out value='${client.firstName}' />">
+                    <input type="text" name="first_name" size="45" value="<c:out value='${client.firstName}' />">
                 </p>
                 <p>
                     <label>Last name</label>
-                    <input type="text" name="location" size="45" value="<c:out value='${client.lastName}' />">
+                    <input type="text" name="last_name" size="45" value="<c:out value='${client.lastName}' />">
                 </p>
                 <p>
                     <label>Patronymic</label>
-                    <input type="text" name="transport" size="45" value="<c:out value='${client.patrName}' />">
+                    <input type="text" name="patron_name" size="45" value="<c:out value='${client.patrName}' />">
                 </p>
                 <p>
                     <label>Passport</label>
-                    <input type="text" name="nutrition" size="45"  value="<c:out value='${client.passport}' />">
+                    <input type="text" name="passport" size="45"  value="<c:out value='${client.passport}' />">
                 </p>
                 <p>
                     <label>Telephone number</label>
-                    <input name="duration" rows="5" size="45" value="<c:out value='${client.telNumber}' />">
+                    <input type="text" name="tel_num" rows="5" size="45" value="<c:out value='${client.telNumber}' />">
                 </p>
                 <p>
                     <input type="submit" value="Save" class="submit" />

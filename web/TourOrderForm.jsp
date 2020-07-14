@@ -106,15 +106,15 @@
                 </c:if>
                 <p>
                     <label>Order date:</label>
-                    <input type="text" name="title" size="45" value="<c:out value='${order.dateOrder}' />">
+                    <input type="text" name="date_order" size="45" value="<c:out value='${order.dateOrder}' />">
                 </p>
                 <p>
                     <label>Client code:</label>
-                    <input type="text" name="location" size="45"  value="<c:out value='${order.clientCode}' />">
+                    <input type="text" name="client_code" size="45"  value="<c:out value='${order.clientCode}' />">
                 </p>
                 <p>
                     <label>Tour code:</label>
-                    <input type="text" name="transport" size="45" value="<c:out value='${order.tourCode}' />">
+                    <input type="text" name="tour_code" size="45" value="<c:out value='${order.tourCode}' />">
                 </p>
                 <p>
                     <input type="submit" value="Save" class="submit" />
